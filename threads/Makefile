@@ -13,7 +13,7 @@ executables := $(foreach filename,$(sources:.c=),$(execdir)/$(filename))
 
 directories = $(srcdir) $(objectdir) $(execdir)
 
-myCflags = -Wall -Wextra -pedantic -std=c99 -Wwrite-strings
+myCflags = -Wall -Wextra -pedantic -std=c99 -Wwrite-strings -g
 libraries = -lpthread
 ALLFLAGS = $(libraries) $(myCflags) $(CFLAGS)
 
