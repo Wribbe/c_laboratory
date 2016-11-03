@@ -5,9 +5,10 @@
 void * say_hello(void * argument) {
     int thread_id = *((int*)argument);
     printf("Hello world from thread: %d\n", thread_id);
+    return NULL;
 }
 
-int main(int argc, char * argv) {
+int main(void) {
 
     int NUM_THREADS = 10;
     int thread_args[NUM_THREADS];
