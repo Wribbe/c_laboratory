@@ -47,3 +47,6 @@ dirs_exist:
 clean:
 	rm -rf $(objectdir)
 	rm -rf $(execdir)
+
+.PHONY: redo
+redo: clean all
