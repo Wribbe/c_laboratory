@@ -47,6 +47,7 @@ dirs_exist:
 clean:
 	rm -rf $(objectdir)
 	rm -rf $(execdir)
+	rm -rf vgcore.*
 
 .PHONY: redo
 redo: clean all
