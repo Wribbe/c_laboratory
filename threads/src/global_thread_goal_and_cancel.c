@@ -52,7 +52,6 @@ void * do_additions(void * arg) {
 
     for(;;) { // Infinite work-loop.
 
-
         while(!*(data->work_available)) {
             // There is no work, sleep.
             printf("[WORKER #%d]: No work, sleeping.\n", data->index);
@@ -81,6 +80,7 @@ void * do_additions(void * arg) {
     return NULL;
 }
 
+
 int check_done(monitor_data * data) {
     int shared = *(data->shared_data);
     int minimum = *(data->shared_minimum);
@@ -92,6 +92,7 @@ int check_done(monitor_data * data) {
         return 1;
     }
 }
+
 
 void * do_monitor(void * arg) {
 
@@ -200,7 +201,6 @@ int main(void) {
         pthread_join(thread_pool[i], NULL);
         printf("[MAIN]: Done joining working thread %d.\n", i);
     }
-
 
     // Destroy mutex.
     pthread_mutex_destroy(&add_mutex);
