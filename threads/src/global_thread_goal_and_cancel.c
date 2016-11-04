@@ -4,10 +4,10 @@
 #include <unistd.h>
 
 
-// Struct for different pointers.
-typedef struct pointers_struct {
+// Struct for function pointers.
+typedef struct function_pointers {
     void (*add_func)();
-} pointers_struct;
+} function_pointers;
 
 
 // Struct for worker thread data.
@@ -18,7 +18,7 @@ typedef struct worker_data {
     int * shared_data;
     int * work_available;
     int * stop_work;
-    pointers_struct * pointers;
+    function_pointers * pointers;
     int index;
 } worker_data;
 
@@ -148,7 +148,7 @@ int main(void) {
     pthread_t monitor_thread;
 
     // Set up the pointer struct.
-    pointers_struct pointers = {.add_func = shared_addition};
+    function_pointers pointers = {.add_func = shared_addition};
 
     // Spin up some worker threads.
     for (int i=0; i<num_threads; i++) {
