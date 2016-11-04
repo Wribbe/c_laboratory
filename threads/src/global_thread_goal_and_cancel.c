@@ -34,11 +34,12 @@ typedef struct monitor_data {
 } monitor_data;
 
 
-// Protected addition method.
+// Shared addition method.
 void shared_addition(worker_data * data) {
-    printf("[DATA]: The current shared variable is: %d\n", *(data->shared_data));
     (*(data->shared_data))++;
+    printf("[DATA]: The current shared variable is: %d\n", *(data->shared_data));
 }
+
 
 void * do_additions(void * arg) {
 
@@ -104,7 +105,6 @@ void * do_monitor(void * arg) {
     pthread_mutex_lock(data->mutex);
     printf("[MONITOR]: got mutex.\n");
 
-    // Set work flag.
     while(!*(data->work_available)) { // No one is working.
         if (check_done(data)) {
             break;
